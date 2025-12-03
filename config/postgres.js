@@ -1,5 +1,7 @@
 // This module initializes the PostgreSQL connection using Sequelize
 
+require("pg");
+require("pg-hstore");
 
 const { Sequelize } = require("sequelize");
 
