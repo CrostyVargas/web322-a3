@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    
+    <%- include("partials/header") %>
+
+    <hr>
+    <div class="container">
+        <h1>Welcome, <%= user.username %>!</h1>
+        <p>Email: <%= user.email %></p>
+
+        <hr>
+
+        <h2>Your Task Summary</h2>
+        <ul>
+            <li>Total Tasks: <%= stats.total %></li>
+            <li>Completed: <%= stats.completed %></li>
+            <li>Pending: <%= stats.pending %></li>
+        </ul>
+
+        <hr>
+
+        <a href="/tasks"> View All Tasks</a><br><br>
+        <a href="/tasks/add"> Create New Task</a><br><br>
+        <a href="/logout"> Logout</a>
+    </div>
+    <%- include("partials/footer") %>
+</body>
+</html>

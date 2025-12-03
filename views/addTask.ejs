@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Task</title>
+</head>
+<body>
+
+    <%- include("partials/header") %>
+    <hr>
+    <div class="container">
+        <h1>Add a New Task</h1>
+
+        <form method="POST" action="/tasks/add">
+
+            <label>Title:</label><br>
+            <input type="text" name="title" required><br><br>
+
+            <label>Description:</label><br>
+            <textarea name="description"></textarea><br><br>
+
+            <label>Due Date:</label><br>
+            <input type="date" name="dueDate"><br><br>
+
+            <button type="submit">Create Task</button>
+
+        </form>
+
+        <br>
+        <a href="/tasks">⬅ Back to Tasks</a>
+    </div>
+    <%- include("partials/footer") %>
+</body>
+</html>

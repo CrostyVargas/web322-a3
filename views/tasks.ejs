@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Tasks</title>
+</head>
+<body>
+    
+    <%- include("partials/header") %>
+
+    <h1>Your Tasks</h1>
+    <div class="container">
+        <a href="/tasks/add"> Add New Task</a>
+        <br><br>
+
+        <table border="1" cellpadding="10">
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+
+            <% tasks.forEach(task => { %>
+            <tr>
+                <td><%= task.title %></td>
+                <td><%= task.description || "—" %></td>
+                <td><%= task.dueDate ? task.dueDate.toDateString() : "—" %></td>
+                <td><%= task.status %></td>
+
+                <td>
+                    <a href="/tasks/edit/<%= task.id %>">Edit</a>
+
+                    <form action="/tasks/delete/<%= task.id %>" method="POST" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+
+                    <form action="/tasks/status/<%= task.id %>" method="POST" style="display:inline;">
+                        <button type="submit">
+                            <%= task.status === "pending" ? "Mark Completed" : "Mark Pending" %>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            <% }) %>
+
+        </table>
+
+        <br>
+        <a href="/dashboard">⬅ Back to Dashboard</a>
+    </div>
+    <%- include("partials/footer") %>
+</body>
+</html>
