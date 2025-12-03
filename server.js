@@ -47,24 +47,24 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 
-// Connect to MongoDB
-const connectToMongo = require("./config/mongoose");
-connectToMongo();
+// // Connect to MongoDB
+// const connectToMongo = require("./config/mongoose");
+// connectToMongo();
 
-// Initialize PostgreSQL
-const sequelize = require("./config/postgres");
-const Task = require("./models/Task");
-sequelize.authenticate()
-    .then(() => {
-        console.log("PostgreSQL connection successful");
-        return sequelize.sync();
-    })
-    .then(() => {
-        console.log("PostgreSQL models synchronized");
-    })
-    .catch(err => {
-        console.error("PostgreSQL connection error:", err);
-    });
+// // Initialize PostgreSQL
+// const sequelize = require("./config/postgres");
+// const Task = require("./models/Task");
+// sequelize.authenticate()
+//     .then(() => {
+//         console.log("PostgreSQL connection successful");
+//         return sequelize.sync();
+//     })
+//     .then(() => {
+//         console.log("PostgreSQL models synchronized");
+//     })
+//     .catch(err => {
+//         console.error("PostgreSQL connection error:", err);
+//     });
 
 
 // *********************** Routes *********************** //
