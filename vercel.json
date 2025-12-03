@@ -5,5 +5,10 @@
   ],
   "routes": [
     { "src": "/(.*)", "dest": "server.js" }
-  ]
+  ],
+  "functions": {
+    "api/server.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
 }
