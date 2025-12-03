@@ -9,7 +9,8 @@
           "node_modules/pg/**", 
           "config/**", 
           "models/**",
-          "views/**"
+          "views/**",
+          "public/**"
         ]
       }
     }
