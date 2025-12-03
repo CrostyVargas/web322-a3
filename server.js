@@ -354,13 +354,7 @@ app.use((req, res) => {
 
 
 // Start Server
-if (process.env.VERCEL) {
-    module.exports = app;
-} else {
-    // Local development
-    app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
-    });
-}
+
+module.exports = app;
 
 
