@@ -352,15 +352,10 @@ app.post("/tasks/status/:id", ensureLogin, async (req, res) => {
 });
 
 //404 Handler
-app.use((req, res) => {
-    res.status(404).send("404 - Page Not Found");
-});
-
-
-// Start Server
-
-// app.listen(PORT, () => {
-//     console.log(`Server is running on port ${PORT}`);
+// app.use((req, res) => {
+//     res.status(404).send("404 - Page Not Found");
 // });
+
+
 
 module.exports = app;

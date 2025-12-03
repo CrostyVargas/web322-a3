@@ -1,36 +1,34 @@
 // api/index.js
 
-const app = require("../server");
 
+const app = require("../server");
 const connectToMongo = require("../config/mongoose"); 
 const sequelize = require("../config/postgres");
-const Task = require("../models/Task");
 
-
-let isDbConnected = false;
-
+let isDbConnecting = false;
 
 module.exports = async (req, res) => {
-  
-
-  if (!isDbConnected) {
+  if (!isDbConnecting) {
+    isDbConnecting = true;
     try {
-      console.log("Attempting initial DB connection...");
 
+      console.log("Attempting DB connections...");
+      
       connectToMongo(); 
 
       await sequelize.authenticate();
-      await sequelize.sync();
+
+      await sequelize.sync(); 
       
-      console.log("All databases connected and synchronized successfully.");
-      isDbConnected = true;
-
+      console.log("DB connections are ready.");
     } catch (error) {
-      console.error("FATAL: Database connection failed during startup:", error.message);
+      console.error("FATAL: Database check failed:", error.message);
 
-      res.status(500).send("Server initialization failed: Database connection error.");
+      isDbConnecting = false; 
+      res.status(500).send("Server error: Database initialization failed.");
       return;
     }
+
   }
 
   app(req, res);
