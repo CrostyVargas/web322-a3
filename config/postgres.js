@@ -2,11 +2,17 @@
 
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize(process.env.POSTGRES_URL, {
-    dialect: "postgres",
-    dialectOptions: {
-        ssl: { require: true, rejectUnauthorized: false }
-    }
-});
+let sequelize = null;
 
-module.exports = sequelize;
+function getSequelize() {
+    if (!sequelize) {
+        sequelize = new Sequelize(process.env.POSTGRES_URL, {
+            dialect: "postgres",
+            dialectModule: require("pg"),
+            logging: false,
+        });
+    }
+    return sequelize;
+}
+
+module.exports = getSequelize();
