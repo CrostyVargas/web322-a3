@@ -355,6 +355,7 @@ app.use((req, res) => {
 
 // Start Server
 
-module.exports = app;
-
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
 
