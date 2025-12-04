@@ -352,9 +352,9 @@ app.post("/tasks/status/:id", ensureLogin, async (req, res) => {
 });
 
 //404 Handler
-// app.use((req, res) => {
-//     res.status(404).send("404 - Page Not Found");
-// });
+app.use((req, res) => {
+    res.status(404).send("404 - Page Not Found");
+});
 
 
 
