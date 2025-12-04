@@ -21,9 +21,6 @@ const PORT = process.env.PORT || 8080;
 // Session Management
 const clientSessions = require("client-sessions");
 
-// Database Models
-// const Task = require("./models/Task"); 
-// const User = require("./models/User");
 
 // Middelware
 app.use(express.urlencoded({ extended: true }));
